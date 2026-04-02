@@ -578,30 +578,163 @@ body {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+/* --- FLOATING HOME BUTTON --- */
+.floating-home {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(248, 246, 243, 0.8); /* Baseada na sua --off-white */
+  backdrop-filter: blur(10px);
+  border: var(--border-thin);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--charcoal);
+  z-index: 90; /* Abaixo do menu-overlay (200) e cart-drawer (300) */
+  transition: all 0.4s var(--transition-smooth);
+  border-radius: var(--radius); /* Usa o radius de 2px do seu projeto */
+}
+
+.floating-home i {
+  font-size: 0.8rem;
+  color: var(--mid-gray);
+  transition: color 0.3s;
+}
+
+.floating-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--mid-gray);
+}
+
+/* Hover State */
+.floating-home:hover {
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+  transform: translateY(-3px);
+}
+
+.floating-home:hover .floating-label,
+.floating-home:hover i {
+  color: var(--off-white);
+}
+
+/* Responsividade Mobile */
+@media (max-width: 800px) {
+  .floating-home {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    border-radius: 50%; /* No mobile, botões circulares funcionam melhor */
+  }
+
+  .floating-label {
+    display: none;
+  }
+
+  .floating-home i {
+    font-size: 1rem;
+  }
+}
 .footer {
   background: var(--charcoal);
   color: rgba(248, 246, 243, 0.5);
-  padding: 3rem 2rem 2rem;
-  margin-top: 3rem;
+  padding: 4rem 2rem 2rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(248, 246, 243, 0.05);
 }
+
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
 }
+
+/* Colunas e Tipografia */
 .footer-col h4 {
   font-size: 0.7rem;
+  text-transform: uppercase;
   letter-spacing: 0.2em;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: var(--off-white);
 }
-.footer-col p, .footer-col a {
+
+.brand-title {
+  font-family: inherit; /* Ou a fonte serifada do seu projeto */
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  color: var(--off-white);
+  margin-bottom: 1rem;
+}
+
+.brand-tagline {
+  font-style: italic;
+  max-width: 250px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-col p, 
+.footer-col a {
   font-size: 0.75rem;
-  color: rgba(248, 246, 243, 0.5);
+  color: rgba(248, 246, 243, 0.6);
   text-decoration: none;
   line-height: 1.8;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.footer-col a:hover {
+  color: var(--off-white);
+}
+
+/* Navegação e Listas */
+.footer-nav a, 
+.contact-info a {
+  margin-bottom: 0.5rem;
+}
+
+.social-mini {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-mini a {
+  font-size: 1rem;
+}
+
+/* Rodapé Inferior (Legal & Créditos) */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(248, 246, 243, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pedro-link {
+  display: inline !important;
+  color: var(--off-white) !important;
+  font-weight: 500;
 }
 .craft-carousel {
   padding: 2rem 2.5rem;
