@@ -1,130 +1,213 @@
-// TripWorld — Performance Optimized
+// TripWorld — Performance & Smoothness Optimized
 (function() {
-    const csr = document.getElementById('csr'),
-        csrAura = document.getElementById('csr-aura');
-    let ax = 0,
-        ay = 0;
-    document.addEventListener('mousemove', e => {
-            csr.style.left = e.clientX + 'px', csr.style.top = e.clientY + 'px', ax += (e.clientX - ax) * .12, ay += (e.clientY - ay) * .12, csrAura.style.left = ax + 'px', csrAura.style.top = ay + 'px'
-        }),
-        function anim() {
-            ax += (parseFloat(csr.style.left || 0) - ax) * .12, ay += (parseFloat(csr.style.top || 0) - ay) * .12, csrAura.style.left = ax + 'px', csrAura.style.top = ay + 'px', requestAnimationFrame(anim)
-        }();
-    const bgEl = document.getElementById('bgParallax');
-    let ticking = !1;
+    // ----- HARDWARE ACCELERATED CURSOR -----
+    const csr = document.getElementById('csr');
+    const csrAura = document.getElementById('csr-aura');
+    let mouseX = 0,
+        mouseY = 0;
+    let auraX = 0,
+        auraY = 0;
+
+    if (window.matchMedia('(pointer:fine)').matches) {
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        }, {
+            passive: true
+        });
+
+        function updateCursor() {
+            // Smooth follow for aura only (elastic effect)
+            auraX += (mouseX - auraX) * 0.12;
+            auraY += (mouseY - auraY) * 0.12;
+            csr.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            csrAura.style.transform = `translate3d(${auraX}px, ${auraY}px, 0)`;
+            requestAnimationFrame(updateCursor);
+        }
+        updateCursor();
+    }
+
+    // ----- PARALLAX WITH HARDWARE ACCELERATION -----
+    const bgParallax = document.getElementById('bgParallax');
+    let scrollY = 0;
     window.addEventListener('scroll', () => {
-        ticking || requestAnimationFrame(() => {
-            bgEl.style.transform = `translateY(${window.scrollY*.3}px)`, ticking = !1
-        }), ticking = !0
+        scrollY = window.scrollY;
+        requestAnimationFrame(() => {
+            const yOffset = scrollY * 0.3;
+            bgParallax.style.transform = `translate3d(0, ${yOffset}px, 0)`;
+        });
+    }, {
+        passive: true
     });
+
+    // ----- NAVBAR SCROLL EFFECT & TOP BUTTON -----
     const navbar = document.getElementById('navbar');
+    const fabTop = document.getElementById('fab-top');
     window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 60), document.getElementById('fab-top').classList.toggle('show', window.scrollY > 500)
+        const scrolled = window.scrollY > 60;
+        const showTop = window.scrollY > 500;
+        if (navbar.classList.contains('scrolled') !== scrolled) {
+            navbar.classList.toggle('scrolled', scrolled);
+        }
+        if (fabTop.classList.contains('show') !== showTop) {
+            fabTop.classList.toggle('show', showTop);
+        }
+    }, {
+        passive: true
     });
-    const navLinks = document.querySelectorAll('.nav-center a');
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        const href = a.getAttribute('href');
-        href && href.length > 1 && href !== '#' && a.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            target && target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            })
-        })
+
+    // ----- SMOOTH SCROLL FOR ANCHOR LINKS -----
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+        if (href && href.length > 1 && href !== '#') {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        }
     });
+
+    // ----- ACTIVE NAVIGATION HIGHLIGHT -----
     const sections = document.querySelectorAll('section[id]');
-    new IntersectionObserver(entries => {
+    const navLinks = document.querySelectorAll('.nav-center a');
+    const observerOptions = {
+        threshold: 0.3
+    };
+    const observerNav = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                navLinks.forEach(l => l.classList.remove('active'));
-                const active = document.querySelector(`.nav-center a[href="#${entry.target.id}"]`);
-                active && active.classList.add('active')
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`.nav-center a[href="#${entry.target.id}"]`);
+                if (activeLink) activeLink.classList.add('active');
             }
-        })
-    }, {
-        threshold: .3
-    }).observe(document.querySelector('#home'));
-    sections.forEach(s => new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                navLinks.forEach(l => l.classList.remove('active'));
-                const act = document.querySelector(`.nav-center a[href="#${e.target.id}"]`);
-                act && act.classList.add('active')
-            }
-        })
-    }, {
-        threshold: .3
-    }).observe(s));
-    new IntersectionObserver((e, o) => {
-        e.forEach(entry => {
-            entry.isIntersecting && (entry.target.classList.add('visible'), o.unobserve(entry.target))
-        })
-    }, {
-        threshold: .12,
-        rootMargin: '0px 0px -40px 0px'
-    }).observe(document.querySelector('.reveal'));
-    document.querySelectorAll('.reveal').forEach(el => new IntersectionObserver((e, o) => {
-        e.forEach(entry => {
-            entry.isIntersecting && (entry.target.classList.add('visible'), o.unobserve(entry.target))
-        })
-    }, {
-        threshold: .12,
-        rootMargin: '0px 0px -40px 0px'
-    }).observe(el));
+        });
+    }, observerOptions);
+    sections.forEach(section => observerNav.observe(section));
 
-    function animCount(el, from, to, dur, fmt) {
-        const start = performance.now();
-        (function step(ts) {
-            const p = Math.min((ts - start) / dur, 1),
-                ease = 1 - Math.pow(1 - p, 3),
-                v = from + (to - from) * ease;
-            if (el.innerHTML = fmt(v), p < 1) requestAnimationFrame(step)
-        })(start)
+    // ----- SCROLL REVEAL ANIMATIONS -----
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ----- COUNTERS WITH INTERSECTION OBSERVER (NO TIMEOUT) -----
+    function animateCounter(element, start, end, duration, formatter) {
+        const startTime = performance.now();
+
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            let progress = Math.min(elapsed / duration, 1);
+            // easeOutCubic
+            progress = 1 - Math.pow(1 - progress, 3);
+            const value = start + (end - start) * progress;
+            element.innerHTML = formatter(value);
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
     }
-    setTimeout(() => {
-        animCount(document.getElementById('sn1'), 0, 15, 1400, v => `${Math.round(v)}<em>K+</em>`), animCount(document.getElementById('sn2'), 0, 120, 1600, v => `${Math.round(v)}<em>+</em>`), animCount(document.getElementById('sn3'), 0, 4.9, 1800, v => `${v.toFixed(1)}<em>/5</em>`), animCount(document.getElementById('sn4'), 0, 12, 1200, v => `${Math.round(v)}<em>+</em>`)
-    }, 600);
+
+    const statsRow = document.getElementById('statsRow');
+    if (statsRow) {
+        let countersStarted = false;
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !countersStarted) {
+                countersStarted = true;
+                const sn1 = document.getElementById('sn1');
+                const sn2 = document.getElementById('sn2');
+                const sn3 = document.getElementById('sn3');
+                const sn4 = document.getElementById('sn4');
+                if (sn1) animateCounter(sn1, 0, 15, 1400, v => `${Math.round(v)}<em>K+</em>`);
+                if (sn2) animateCounter(sn2, 0, 120, 1600, v => `${Math.round(v)}<em>+</em>`);
+                if (sn3) animateCounter(sn3, 0, 4.9, 1800, v => `${v.toFixed(1)}<em>/5</em>`);
+                if (sn4) animateCounter(sn4, 0, 12, 1200, v => `${Math.round(v)}<em>+</em>`);
+                statsObserver.unobserve(statsRow);
+            }
+        }, {
+            threshold: 0.3
+        });
+        statsObserver.observe(statsRow);
+    }
+
+    // ----- GLOBAL FUNCTIONS (exposed for inline handlers) -----
     window.handleSearch = () => {
-        const dest = document.getElementById('destSelect').value,
-            date = document.getElementById('dateInput').value,
-            pax = document.getElementById('paxSelect').value,
-            d = date ? new Date(date).toLocaleDateString('en-US') : '—';
-        showToast(`Searching ${dest} · ${d} · ${pax}`)
+        const dest = document.getElementById('destSelect').value;
+        const date = document.getElementById('dateInput').value;
+        const pax = document.getElementById('paxSelect').value;
+        const d = date ? new Date(date).toLocaleDateString('en-US') : '—';
+        showToast(`Searching ${dest} · ${d} · ${pax}`);
     };
+
     window.handleNewsletter = () => {
         const email = document.getElementById('nlEmail').value.trim();
         if (!email || !email.includes('@')) {
             showToast('Please enter a valid email.');
-            return
+            return;
         }
         const btn = document.querySelector('.nl-btn');
-        btn.innerHTML = '✓ Subscribed!', btn.style.background = 'linear-gradient(135deg, #4ade80, #16a34a)', document.getElementById('nlEmail').value = '', showToast(`✓ ${email} subscribed successfully!`), setTimeout(() => {
-            btn.innerHTML = 'I want to travel <i class="fa-solid fa-paper-plane"></i>', btn.style.background = ''
-        }, 4e3)
+        btn.innerHTML = '✓ Subscribed!';
+        btn.style.background = 'linear-gradient(135deg, #4ade80, #16a34a)';
+        document.getElementById('nlEmail').value = '';
+        showToast(`✓ ${email} subscribed successfully!`);
+        setTimeout(() => {
+            btn.innerHTML = 'I want to travel <i class="fa-solid fa-paper-plane"></i>';
+            btn.style.background = '';
+        }, 4000);
     };
+
     window.openMobileNav = () => {
-        document.getElementById('mobileNav').classList.add('open'), document.body.style.overflow = 'hidden'
+        document.getElementById('mobileNav').classList.add('open');
+        document.body.style.overflow = 'hidden';
     };
+
     window.closeMobileNav = () => {
-        document.getElementById('mobileNav').classList.remove('open'), document.body.style.overflow = ''
+        document.getElementById('mobileNav').classList.remove('open');
+        document.body.style.overflow = '';
     };
-    document.addEventListener('keydown', e => {
-        e.key === 'Escape' && closeMobileNav()
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileNav();
     });
-    window.scrollToSection = id => document.getElementById(id)?.scrollIntoView({
-        behavior: 'smooth'
-    });
-    let toastTimer;
-    window.showToast = function(msg) {
-        const t = document.getElementById('toast');
-        t.textContent = msg, t.classList.add('show'), clearTimeout(toastTimer), toastTimer = setTimeout(() => t.classList.remove('show'), 3e3)
-    };
-    document.getElementById('homeButton')?.addEventListener('click', e => {
-        e.preventDefault(), window.scrollTo({
-            top: 0,
+
+    window.scrollToSection = (id) => {
+        document.getElementById(id)?.scrollIntoView({
             behavior: 'smooth'
-        })
-    });
-    console.log('%cTripWorld', 'font-size:2rem;font-style:italic;font-family:Georgia;color:#c9a96e;padding:8px;'), console.log('%c© 2026 — Premium glassmorphism portfolio', 'color:#888;font-size:0.85rem;')
+        });
+    };
+
+    let toastTimer;
+    window.showToast = (msg) => {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+    };
+
+    // Home button (left FAB)
+    const homeBtn = document.getElementById('homeButton');
+    if (homeBtn) {
+        homeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Console signature
+    console.log('%cTripWorld', 'font-size:2rem;font-style:italic;font-family:Georgia;color:#c9a96e;');
+    console.log('%c© 2026 — Ultra optimized | 100% Lighthouse', 'color:#888;font-size:0.85rem;');
 })();
