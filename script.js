@@ -27,7 +27,7 @@ const projects = [{
   title: "Visual Archive",
   domain: "Photography",
   desc: "High-impact responsive gallery",
-  thumb: "prints/arquivo_print.webp",
+  thumb: "prints/archive_print.webp",
   url: "projects/archive/archive.html"
 }, {
   title: "Trip World",
