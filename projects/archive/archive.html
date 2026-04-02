@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport">
+  <title>Visual Archive | High Impact Curation</title><!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <h1>Visual<br>
+        Archive</h1>
+        <p>High Impact Curation</p>
+      </div>
+      <div class="nav-meta">
+        EST. 2026<br>
+        PHOTOGRAPHIC <b>COLLECTION</b> // CULTURE + ART
+      </div>
+    </header>
+    <div class="controls-row">
+      <div class="search-sort-group">
+        <div class="search-box">
+          <i class="fas fa-search"></i> <input id="searchInput" placeholder="Search by label or tag..." type="text">
+        </div><select class="sort-select" id="sortSelect">
+          <option value="default">
+            Sort: Default
+          </option>
+          <option value="az">
+            A → Z (label)
+          </option>
+          <option value="za">
+            Z → A (label)
+          </option>
+          <option value="newest">
+            Newest first
+          </option>
+        </select> <button class="action-btn" id="resetFiltersBtn"><i class="fas fa-redo-alt"></i> Reset</button>
+      </div>
+      <div class="stats-badge" id="statsCounter">
+        0 images
+      </div>
+    </div>
+    <div class="filters-section">
+      <div class="filters" id="filterBar">
+        <!-- Filters generated dynamically -->
+      </div>
+    </div>
+    <main class="gallery-grid" id="galleryGrid"></main>
+    <div style="display: flex; justify-content: center; margin-top: 60px;">
+      <button class="action-btn" id="loadMoreBtn" style="padding: 15px 40px; font-size: 1rem;"><i class="fas fa-plus-circle"></i> Load more</button>
+    </div>
+    <div class="info-section">
+      <div class="info-block">
+        <h3>ABOUT THE ARCHIVE</h3>
+        <p>Independent visual curation celebrating social aesthetics, experimentation, and contemporary vision. Each image is a fragment of visual narrative — from architecture to fashion, from minimalism to urban chaos.</p>
+      </div>
+      <div class="info-block">
+        <h3>CONTACT</h3>
+        <p><i class="fas fa-envelope" style="margin-right: 8px;"></i> hello@visualarchive.com</p>
+        <p><i class="fas fa-map-pin"></i> São Paulo — NY — Berlin</p>
+        <div class="social-links" style="margin-top: 12px;">
+          <i class="fab fa-instagram"></i> <i class="fab fa-behance"></i> <i class="fab fa-x-twitter"></i>
+        </div>
+      </div>
+      <div class="info-block">
+        <h3>NEWSLETTER</h3>
+        <p>Receive biweekly selections. <span id="mockNewsletter" style="color: var(--accent); cursor: pointer;">Subscribe →</span></p>
+        <p style="margin-top: 10px;">© 2026 — Independent Curation</p>
+        <p style="margin-top: 10px;">Designed and coded by Pedro André. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-copy">
+      VISUAL ARCHIVE // BRUTALIST WALL // EVER-EXPANDING COLLECTION
+    </div>
+  </div><a class="floating-home" href="../index.html" title="Back to main page"><i class="fas fa-home"></i> <span>Home</span></a> <!-- Lightbox Modal -->
+  <div class="modal-lightbox" id="lightboxModal">
+    <div class="modal-close" id="modalClose">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="modal-nav">
+      <button id="modalPrev"><i class="fas fa-chevron-left"></i></button> <button id="modalNext"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="modal-content">
+      <img alt="Enlarged view" id="modalImg" src="">
+      <div class="modal-caption" id="modalCaption"></div>
+      <div class="modal-download" id="modalDownload">
+        <i class="fas fa-download"></i> Download
+      </div>
+    </div>
+  </div>
+  <script src="script.js">
+  </script>
+</body>
+</html>

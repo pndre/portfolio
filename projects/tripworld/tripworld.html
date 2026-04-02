@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+  <meta content="TripWorld — Premium travel experiences, personalized itineraries, and transformative journeys. Explore curated destinations with luxury support." name="description">
+  <title>TripWorld — Journeys That Transform</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="csr"></div>
+  <div id="csr-aura"></div>
+  <div class="bg-parallax" id="bgParallax"></div>
+  <div class="bg-gradient"></div>
+  <div class="bg-grain"></div>
+  <div id="toast"></div>
+  <div class="nav-mobile-overlay" id="mobileNav">
+    <button class="nav-mobile-close" onclick="closeMobileNav()"><i class="fa-solid fa-xmark"></i></button> <a href="#home" onclick="closeMobileNav()">Home</a> <a href="#destinos" onclick="closeMobileNav()">Destinations</a> <a href="#experiencias" onclick="closeMobileNav()">Experiences</a> <a href="#depoimentos" onclick="closeMobileNav()">Travelers</a> <a href="#contato" onclick="closeMobileNav()">Contact</a>
+  </div>
+  <nav id="navbar">
+    <a class="logo" href="#home">TripWorld<span class="logo-dot"></span></a>
+    <div class="nav-center">
+      <a class="active" href="#home">Home</a> <a href="#destinos">Destinations</a> <a href="#experiencias">Experiences</a> <a href="#depoimentos">Travelers</a> <a href="#contato">Contact</a>
+    </div><button class="nav-cta" onclick="scrollToSection('contato')">Plan trip <i class="fa-solid fa-arrow-right"></i></button> <button class="hamburger" id="hamburger" onclick="openMobileNav()"><span></span><span></span><span></span></button>
+  </nav>
+  <section id="home">
+    <div class="hero">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span><i class="fa-solid fa-bolt"></i> Flash Sale — 30% off selected resorts
+      </div>
+      <h1 class="hero-title">Collect <em>moments</em><span class="line2">not just destinations.</span></h1>
+      <p class="hero-sub">Personalized travel experiences for those who seek more than tourism — seek transformation.</p>
+      <div class="booking-widget">
+        <div class="bk-field">
+          <span class="bk-label"><span class="bk-label-icon"><i class="fa-solid fa-location-dot"></i></span> Destination</span><select class="bk-select" id="destSelect">
+            <option>
+              Maldives, Asia
+            </option>
+            <option>
+              Paris, France
+            </option>
+            <option>
+              Rio de Janeiro, Brazil
+            </option>
+            <option>
+              Tokyo, Japan
+            </option>
+            <option>
+              Santorini, Greece
+            </option>
+            <option>
+              Bali, Indonesia
+            </option>
+          </select>
+        </div>
+        <div class="bk-field">
+          <span class="bk-label"><span class="bk-label-icon"><i class="fa-solid fa-calendar-days"></i></span> Departure</span><input class="bk-input" id="dateInput" type="date" value="2026-10-12">
+        </div>
+        <div class="bk-field">
+          <span class="bk-label"><span class="bk-label-icon"><i class="fa-solid fa-user-group"></i></span> Travelers</span><select class="bk-select" id="paxSelect">
+            <option>
+              1 adult
+            </option>
+            <option selected>
+              2 adults
+            </option>
+            <option>
+              Family (4 pax)
+            </option>
+            <option>
+              Group (6+ pax)
+            </option>
+          </select>
+        </div><button class="bk-btn" onclick="handleSearch()">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-num" id="sn1">0<em>K+</em></span><span class="stat-label">Happy travelers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="sn2">0<em>+</em></span><span class="stat-label">Premium destinations</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="sn3">0<em>/5</em></span><span class="stat-label">Average rating</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="sn4">0<em>+</em></span><span class="stat-label">Years of expertise</span>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div><span>Explore</span>
+      </div>
+    </div>
+  </section>
+  <section id="destinos">
+    <div class="container">
+      <div class="section-eyebrow reveal">
+        <div class="section-eyebrow-line"></div><span class="section-eyebrow-text">Trending destinations</span>
+        <div class="section-eyebrow-line r"></div>
+      </div>
+      <h2 class="section-title reveal">Choose your next <em>adventure</em></h2>
+      <p class="section-desc reveal">From paradisiac beaches to vibrant metropolises — we curate the world's most extraordinary experiences.</p>
+      <div class="dest-grid">
+        <div class="destino-card reveal">
+          <div class="dest-badge">
+            <i class="fa-solid fa-star"></i> Featured
+          </div>
+          <div class="dest-img-wrap">
+            <img alt="Maldives" class="dest-img" src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&q=80&w=900">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-body">
+            <div>
+              <span class="dest-region">Asia • Indian Ocean</span>
+              <div class="dest-name">
+                Maldives
+              </div>
+              <p class="dest-desc">Overwater bungalows, pristine coral reefs, and the most beautiful sunset on Earth.</p>
+              <div class="dest-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <div class="dest-right">
+              <span class="dest-from">from</span><span class="dest-price">$ 799</span><button class="dest-btn" onclick="showToast('Opening Maldives...')">View packages <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="destino-card reveal reveal-delay-1">
+          <div class="dest-badge">
+            <i class="fa-solid fa-heart"></i> Romantic
+          </div>
+          <div class="dest-img-wrap">
+            <img alt="Paris" class="dest-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=700">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-body">
+            <div>
+              <span class="dest-region">Europe • France</span>
+              <div class="dest-name">
+                Paris
+              </div>
+              <div class="dest-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <div class="dest-right">
+              <span class="dest-from">from</span><span class="dest-price">$ 720</span><button class="dest-btn" onclick="showToast('Opening Paris...')">View <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="destino-card reveal reveal-delay-2">
+          <div class="dest-badge">
+            <i class="fa-solid fa-house"></i> Domestic
+          </div>
+          <div class="dest-img-wrap">
+            <img alt="Rio" class="dest-img" src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&q=80&w=700">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-body">
+            <div>
+              <span class="dest-region">South America • Brazil</span>
+              <div class="dest-name">
+                Rio de Janeiro
+              </div>
+              <div class="dest-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+            <div class="dest-right">
+              <span class="dest-from">from</span><span class="dest-price">$ 310</span><button class="dest-btn" onclick="showToast('Opening Rio...')">View <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="destino-card reveal reveal-delay-3">
+          <div class="dest-badge">
+            <i class="fa-solid fa-landmark"></i> Culture
+          </div>
+          <div class="dest-img-wrap">
+            <img alt="Tokyo" class="dest-img" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=700">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-body">
+            <div>
+              <span class="dest-region">Asia • Japan</span>
+              <div class="dest-name">
+                Tokyo
+              </div>
+              <div class="dest-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <div class="dest-right">
+              <span class="dest-from">from</span><span class="dest-price">$ 1090</span><button class="dest-btn" onclick="showToast('Opening Tokyo...')">View <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="experiences-section" id="experiencias">
+    <div class="container">
+      <div class="section-eyebrow reveal">
+        <div class="section-eyebrow-line"></div><span class="section-eyebrow-text">Why TripWorld</span>
+        <div class="section-eyebrow-line r"></div>
+      </div>
+      <h2 class="section-title reveal">Every detail <em>matters</em></h2>
+      <p class="section-desc reveal">We don't sell packages. We create memories that last forever.</p>
+      <div class="exp-grid">
+        <div class="exp-card reveal">
+          <div class="exp-icon">
+            <i class="fa-solid fa-map-location-dot"></i>
+          </div>
+          <div class="exp-title">
+            Custom Itineraries
+          </div>
+          <p class="exp-desc">Every trip built from scratch, aligned with your rhythm, interests, and budget. No generic packages.</p>
+        </div>
+        <div class="exp-card reveal reveal-delay-1">
+          <div class="exp-icon">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <div class="exp-title">
+            24/7 Dedicated Support
+          </div>
+          <p class="exp-desc">A human team available anytime. From planning to return, you are never alone.</p>
+        </div>
+        <div class="exp-card reveal reveal-delay-2">
+          <div class="exp-icon">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <div class="exp-title">
+            Luxury Partners
+          </div>
+          <p class="exp-desc">Boutique hotels, exclusive dinners, and experiences that never appear in any catalog.</p>
+        </div>
+        <div class="exp-card reveal reveal-delay-3">
+          <div class="exp-icon">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+          </div>
+          <div class="exp-title">
+            Fair Price Guarantee
+          </div>
+          <p class="exp-desc">Total transparency. Find a lower price? We'll match it. No surprises.</p>
+        </div>
+        <div class="exp-card reveal reveal-delay-4">
+          <div class="exp-icon">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="exp-title">
+            Sustainable Travel
+          </div>
+          <p class="exp-desc">100% CO₂ compensation + working with operators that respect local cultures.</p>
+        </div>
+        <div class="exp-card reveal reveal-delay-5">
+          <div class="exp-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="exp-title">
+            Premium Insurance Included
+          </div>
+          <p class="exp-desc">Full coverage in all our packages. Travel worry‑free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="testimonials-section" id="depoimentos">
+    <div class="container">
+      <div class="section-eyebrow reveal">
+        <div class="section-eyebrow-line"></div><span class="section-eyebrow-text">Real voices</span>
+        <div class="section-eyebrow-line r"></div>
+      </div>
+      <h2 class="section-title reveal">What our <em>travelers</em> say</h2>
+      <p class="section-desc reveal">Over 15,000 stories of transformation told by those who lived them.</p>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <span class="testi-quote"><i class="fa-solid fa-quote-left"></i></span>
+          <p class="testi-text">TripWorld exceeded all expectations. Every detail was carefully thought — from transfers to the last dinner. Already planning my next trip.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">
+              M
+            </div>
+            <div>
+              <span class="testi-name">Mariana Souza</span><span class="testi-trip">Maldives, 14 days</span>
+            </div>
+            <div class="testi-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <span class="testi-quote"><i class="fa-solid fa-quote-left"></i></span>
+          <p class="testi-text">Traveling to Japan was always a dream. The team handled every detail — from Kyoto's temples to Tokyo's best ramen. A truly life‑changing journey.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">
+              R
+            </div>
+            <div>
+              <span class="testi-name">Ricardo Alves</span><span class="testi-trip">Tokyo + Kyoto, 12 days</span>
+            </div>
+            <div class="testi-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-4">
+          <span class="testi-quote"><i class="fa-solid fa-quote-left"></i></span>
+          <p class="testi-text">Personalized service I had never experienced before. I felt like a whole team was dedicated just to me. Transparent prices and unique experiences.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">
+              F
+            </div>
+            <div>
+              <span class="testi-name">Fernanda Lima</span><span class="testi-trip">Paris + Provence, 10 days</span>
+            </div>
+            <div class="testi-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="nl-section" id="contato">
+    <div class="container">
+      <div class="nl-inner reveal">
+        <div class="section-eyebrow" style="margin-bottom:14px;">
+          <div class="section-eyebrow-line"></div><span class="section-eyebrow-text">Newsletter</span>
+          <div class="section-eyebrow-line r"></div>
+        </div>
+        <h2 class="nl-title">Receive <em>exclusive offers</em></h2>
+        <p class="nl-sub">Flash sales, secret destinations, and travel tips delivered straight to your inbox.<br>
+        Only the best content, no spam.</p>
+        <div class="nl-form">
+          <input class="nl-input" id="nlEmail" placeholder="your@email.com" type="email"><button class="nl-btn" onclick="handleNewsletter()">I want to travel <i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+        <div class="nl-features">
+          <div class="nl-feat">
+            <span class="nl-feat-icon"><i class="fa-solid fa-check"></i></span> Cancel anytime
+          </div>
+          <div class="nl-feat">
+            <span class="nl-feat-icon"><i class="fa-solid fa-check"></i></span> No spam, we promise
+          </div>
+          <div class="nl-feat">
+            <span class="nl-feat-icon"><i class="fa-solid fa-check"></i></span> Exclusive deals for subscribers
+          </div>
+        </div>
+        <div class="nl-contact">
+          <a class="nl-contact-item" href="tel:+551140028922"><span class="nl-contact-icon"><i class="fa-solid fa-phone"></i></span>(11) 4002-8922</a><a class="nl-contact-item" href="mailto:ola@tripworld.com"><span class="nl-contact-icon"><i class="fa-solid fa-envelope"></i></span>hello@tripworld.com</a><a class="nl-contact-item" href="#" onclick="showToast('WhatsApp coming soon!'); return false;"><span class="nl-contact-icon"><i class="fa-brands fa-whatsapp"></i></span>WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <span class="footer-brand-logo">Trip<em>World</em></span>
+          <p class="footer-brand-desc">Travel agency specializing in personalized itineraries and perspective‑changing experiences. Present in 5 countries, 15,000+ happy customers.</p>
+          <div class="footer-social">
+            <a href="#" onclick="showToast('Instagram'); return false;" title="Instagram"><i class="fa-brands fa-instagram"></i></a> <a href="#" onclick="showToast('Facebook'); return false;" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a> <a href="#" onclick="showToast('YouTube'); return false;" title="YouTube"><i class="fa-brands fa-youtube"></i></a> <a href="#" onclick="showToast('TikTok'); return false;" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Destinations</span><a href="#destinos">South America</a><a href="#destinos">Europe</a><a href="#destinos">Asia & Pacific</a><a href="#destinos">Caribbean</a><a href="#destinos">Middle East</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Company</span><a href="#" onclick="showToast('Coming soon'); return false;">About us</a><a href="#" onclick="showToast('Coming soon'); return false;">How it works</a><a href="#" onclick="showToast('Coming soon'); return false;">Work with us</a><a href="#" onclick="showToast('Coming soon'); return false;">Press</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Support</span><a href="#contato">Contact us</a><a href="#" onclick="showToast('Coming soon'); return false;">FAQ</a><a href="#" onclick="showToast('Coming soon'); return false;">Travel policy</a><a href="#" onclick="showToast('Coming soon'); return false;">Travel insurance</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 TripWorld. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#" onclick="showToast('Privacy'); return false;">Privacy</a><a href="#" onclick="showToast('Terms'); return false;">Terms</a><a href="#" onclick="showToast('Cookies'); return false;">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="fab-left">
+    <a class="fab" href="../../index.html" title="Back to home"><span><i class="fa-solid fa-house"></i></span><span class="fab-label">Home</span></a>
+  </div>
+  <div class="fab-group">
+    <div class="fab" id="fab-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+      <span><i class="fa-solid fa-arrow-up"></i></span><span class="fab-label">Top</span>
+    </div>
+  </div>
+  <script src="script.js">
+  </script>
+</body>
+</html>

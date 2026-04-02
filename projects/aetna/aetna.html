@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+  <title>ÆTNA — Medical Clinic</title><!-- Preconnect & optimized fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar" id="progBar"></div>
+  </div>
+  <div class="modal-overlay" id="modalCred">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <p class="modal-title">Accredited Network</p>
+      <p class="modal-text">ÆTNA works with high-performance health plans, including <strong>Bradesco Saúde</strong>, <strong>Unimed Nacional</strong>, <strong>SulAmérica</strong>, <strong>Amil</strong>, and <strong>Porto Seguro</strong>.<br>
+      <br>
+      For corporate plans and custom contracts, please contact us: <strong>(11) 3082-4400</strong>.</p>
+    </div>
+  </div>
+  <nav id="navbar">
+    <div class="nav-logo">
+      ÆTNA<span>· precision clinic</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <a href="#hero">Home</a>
+      </li>
+      <li>
+        <a href="#especialidades">Specialties</a>
+      </li>
+      <li>
+        <a href="#jornada">Journey</a>
+      </li>
+      <li>
+        <a href="#depoimentos">Memories</a>
+      </li>
+      <li>
+        <a href="#contato">Contact</a>
+      </li>
+    </ul><button class="nav-cta" id="btnNavAgendar">Schedule</button>
+  </nav>
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div><span>Founded MCMXCIX · São Paulo</span>
+      </div>
+      <h1 class="hero-h1">Care that<br>
+      never repeats,<br>
+      <em style="font-style:normal;border-bottom:.5px solid rgba(182,126,58,.4)">it signs.</em></h1>
+      <div class="signature-wrap">
+        <svg viewbox="0 0 260 55" xmlns="http://www.w3.org/2000/svg">
+        <path class="sig-path" d="M 10,38 C 20,12 35,8 50,20 C 62,30 58,42 48,40 C 38,38 40,22 55,20 C 72,18 82,32 88,28 C 94,24 90,16 100,14 C 115,12 118,30 128,32 C 138,34 140,20 152,18 C 165,16 168,28 178,30 C 185,32 186,24 195,22 C 208,20 215,36 225,34 C 232,33 235,28 245,26" id="sigPath"></path></svg>
+      </div>
+      <p class="hero-desc">Precision medicine where each protocol is unique. Confidential care, cutting-edge diagnostic technology, and a team that has anticipated excellence for over 28 years.</p>
+      <div class="hero-btns">
+        <button class="btn-fill" id="btnHeroAgendar"><span>Schedule appointment</span></button><button class="btn-ghost" id="btnHeroCred"><span>Accredited network</span></button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">
+            +28
+          </div>
+          <div class="stat-label">
+            years of legacy
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">
+            98%
+          </div>
+          <div class="stat-label">
+            recommendation
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">
+            &lt;1h
+          </div>
+          <div class="stat-label">
+            response time
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">
+            40+
+          </div>
+          <div class="stat-label">
+            specialties
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-wrap"><img alt="Precision medicine" id="heroParallax" src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&q=80&w=900"></div>
+      <div class="hero-float-card lux-shadow">
+        <div class="fc-label">
+          Accreditation
+        </div>
+        <div class="fc-text">
+          ONA Level 3 — maximum excellence in healthcare management
+        </div>
+      </div>
+      <div class="hero-year-badge">
+        MCMXCIX
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+  <section id="especialidades">
+    <div class="container">
+      <div class="spec-intro">
+        <div class="reveal">
+          <div class="sec-eyebrow">
+            <div class="sec-eyebrow-line"></div><span>Areas of practice</span>
+          </div>
+          <h2 class="sec-title">Scientifically<br>
+          curated specialties</h2>
+        </div>
+        <p class="spec-note reveal reveal-delay-1">Each specialty is managed by a nationally renowned medical staff, with evidence-based protocols and a care philosophy that transcends diagnosis.</p>
+      </div>
+      <div class="spec-grid reveal">
+        <div class="spec-card">
+          <div class="spec-card-inner">
+            <div class="spec-icon-num">
+              01
+            </div>
+            <div class="spec-name">
+              Cardiology
+            </div>
+            <div class="spec-tag-line">
+              Prevention · Diagnosis · Rehabilitation
+            </div>
+            <div class="spec-desc">
+              4D echocardiogram, advanced Holter, sports cardiology, and supervised cardiac rehabilitation.
+            </div>
+          </div>
+          <div class="spec-arrow">
+            ↗
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-inner">
+            <div class="spec-icon-num">
+              02
+            </div>
+            <div class="spec-name">
+              Neurology
+            </div>
+            <div class="spec-tag-line">
+              Neurophysiology · Cognition · Sleep
+            </div>
+            <div class="spec-desc">
+              Electroneuromyography, cognitive mapping, sleep medicine, and treatment of refractory headaches.
+            </div>
+          </div>
+          <div class="spec-arrow">
+            ↗
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-inner">
+            <div class="spec-icon-num">
+              03
+            </div>
+            <div class="spec-name">
+              Gynecology
+            </div>
+            <div class="spec-tag-line">
+              Oncology · Menopause · Reproduction
+            </div>
+            <div class="spec-desc">
+              Cancer screening, gynecological endoscopy, and high-complexity assisted reproduction.
+            </div>
+          </div>
+          <div class="spec-arrow">
+            ↗
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-inner">
+            <div class="spec-icon-num">
+              04
+            </div>
+            <div class="spec-name">
+              Pulmonology
+            </div>
+            <div class="spec-tag-line">
+              Asthma · Fibrosis · Sleep
+            </div>
+            <div class="spec-desc">
+              Treatment of severe asthma, pulmonary fibrosis, COPD, and complete polysomnography.
+            </div>
+          </div>
+          <div class="spec-arrow">
+            ↗
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-inner">
+            <div class="spec-icon-num">
+              05
+            </div>
+            <div class="spec-name">
+              General Practice
+            </div>
+            <div class="spec-tag-line">
+              Check-up · Longevity · Prevention
+            </div>
+            <div class="spec-desc">
+              Internal medicine, personalized longevity protocols, and complete executive check-up.
+            </div>
+          </div>
+          <div class="spec-arrow">
+            ↗
+          </div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-inner">
+            <div class="spec-icon-num">
+              06
+            </div>
+            <div class="spec-name">
+              Pediatrics
+            </div>
+            <div class="spec-tag-line">
+              Development · Prevention · Family
+            </div>
+            <div class="spec-desc">
+              Comprehensive monitoring of neuropsychomotor development and family preventive medicine.
+            </div>
+          </div>
+          <div class="spec-arrow">
+            ↗
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+  <section id="numeros">
+    <div class="container" style="padding:0">
+      <div class="numbers-grid">
+        <div class="num-card reveal">
+          <div class="num-val" data-target="28">
+            0
+          </div>
+          <div class="num-label">
+            Years of clinical legacy
+          </div>
+        </div>
+        <div class="num-card reveal reveal-delay-1">
+          <div class="num-val" data-suffix="%" data-target="98">
+            0
+          </div>
+          <div class="num-label">
+            Recommendation rate
+          </div>
+        </div>
+        <div class="num-card reveal reveal-delay-2">
+          <div class="num-val" data-target="40">
+            0
+          </div>
+          <div class="num-label">
+            Medical specialties
+          </div>
+        </div>
+        <div class="num-card reveal reveal-delay-3">
+          <div class="num-val" data-target="12000">
+            0
+          </div>
+          <div class="num-label">
+            Patients served
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+  <section id="jornada">
+    <div class="container">
+      <div class="reveal">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>Excellence workflow</span>
+        </div>
+        <h2 class="sec-title" style="color:var(--base)">From reception to<br>
+        continuous follow-up</h2>
+      </div>
+      <div class="journey-layout">
+        <div class="journey-left reveal reveal-delay-1">
+          <div class="journey-img-wrap">
+            <img alt="ÆTNA Clinic" id="journeyParallax" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=700">
+            <div class="journey-img-caption">
+              "Precision is not coldness — it is deep respect for the other."
+            </div>
+          </div>
+        </div>
+        <div class="journey-steps">
+          <div class="journey-step reveal">
+            <div class="step-num">
+              01
+            </div>
+            <div class="step-body">
+              <div class="step-title">
+                Private Reception
+              </div>
+              <div class="step-text">
+                Welcoming without queues with discreet biometric validation. Each patient is recognized by name, not by number.
+              </div>
+              <div class="step-tag">
+                Privacy guaranteed
+              </div>
+            </div>
+          </div>
+          <div class="journey-step reveal reveal-delay-1">
+            <div class="step-num">
+              02
+            </div>
+            <div class="step-body">
+              <div class="step-title">
+                Diagnostic Screening
+              </div>
+              <div class="step-text">
+                In-depth medical history supported by predictive intelligence. Unified, integrated, always accessible history.
+              </div>
+              <div class="step-tag">
+                Clinical intelligence
+              </div>
+            </div>
+          </div>
+          <div class="journey-step reveal reveal-delay-2">
+            <div class="step-num">
+              03
+            </div>
+            <div class="step-body">
+              <div class="step-title">
+                Specialized Consultation
+              </div>
+              <div class="step-text">
+                Minimum 45 minutes per consultation. Shared decision-making, no rush — time belongs to the patient.
+              </div>
+              <div class="step-tag">
+                Patient-centered medicine
+              </div>
+            </div>
+          </div>
+          <div class="journey-step reveal reveal-delay-3">
+            <div class="step-num">
+              04
+            </div>
+            <div class="step-body">
+              <div class="step-title">
+                Active Post-Care
+              </div>
+              <div class="step-text">
+                Continuous telemonitoring, direct access to the responsible physician, and personalized periodic reports.
+              </div>
+              <div class="step-tag">
+                Longitudinal care
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider" style="background:linear-gradient(90deg,transparent,rgba(182,126,58,.15),transparent)"></div>
+  <section id="depoimentos">
+    <div class="container">
+      <div class="reveal">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>Trust memorial</span>
+        </div>
+        <h2 class="sec-title">Voices that<br>
+        define our practice</h2>
+      </div>
+      <div class="testimonial-layout">
+        <div class="test-left reveal reveal-delay-1">
+          <p class="test-left-title">Each testimonial is a story of care that begins where conventional medicine ends.</p>
+          <div class="test-seal">
+            <div class="seal-row">
+              <div class="seal-dot"></div><span>CFM-certified medical staff</span>
+            </div>
+            <div class="seal-row">
+              <div class="seal-dot"></div><span>ONA Level 3 accreditation</span>
+            </div>
+            <div class="seal-row">
+              <div class="seal-dot"></div><span>LGPD — Total data confidentiality</span>
+            </div>
+            <div class="seal-row">
+              <div class="seal-dot"></div><span>ISO 9001 Quality Management</span>
+            </div>
+          </div>
+        </div>
+        <div class="test-list">
+          <div class="test-item reveal">
+            <div class="test-quote-mark">
+              "
+            </div>
+            <div>
+              <p class="test-text">The clinic is a territory where medicine meets sensitivity. The diagnosis was precise and the follow-up truly meticulous — something I haven't found anywhere else.</p>
+              <div class="test-sig">
+                — L. F. Albuquerque · Patient for 6 years
+              </div>
+            </div>
+          </div>
+          <div class="test-item reveal reveal-delay-1">
+            <div class="test-quote-mark">
+              "
+            </div>
+            <div>
+              <p class="test-text">I've never seen such a well-aligned team. Communication between specialists avoids repetition and brings a security that few patients are lucky enough to experience.</p>
+              <div class="test-sig">
+                — Dr. R. Tavares · Physician and patient
+              </div>
+            </div>
+          </div>
+          <div class="test-item reveal reveal-delay-2">
+            <div class="test-quote-mark">
+              "
+            </div>
+            <div>
+              <p class="test-text">The environment, the confidentiality, the precision of the exams — every detail has been thought for those who demand excellence. I feel like I'm their only patient, every time.</p>
+              <div class="test-sig">
+                — M. C. Diniz · Businesswoman, SP
+              </div>
+            </div>
+          </div>
+          <div class="test-item reveal reveal-delay-3">
+            <div class="test-quote-mark">
+              "
+            </div>
+            <div>
+              <p class="test-text">After years of searching for answers, it was here that I found a doctor willing to listen with the time my case required. The diagnosis changed my life.</p>
+              <div class="test-sig">
+                — P. M. Soares · Executive, RJ
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+  <section id="contato">
+    <div class="container">
+      <div class="reveal">
+        <div class="sec-eyebrow">
+          <div class="sec-eyebrow-line"></div><span>Private scheduling</span>
+        </div>
+        <h2 class="sec-title">Start your<br>
+        journey with us</h2>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-left reveal reveal-delay-1">
+          <p class="contact-intro">The first step towards exceptional care is simple. Our team responds within 2 business hours.</p>
+          <div class="info-lines">
+            <div class="info-line">
+              <div class="info-icon">
+                ◎
+              </div><span>Alameda Lorena, 1450, Jardins<br>
+              São Paulo — SP, 01424-001</span>
+            </div>
+            <div class="info-line">
+              <div class="info-icon">
+                ◉
+              </div><span>(11) 3082-4400</span>
+            </div>
+            <div class="info-line">
+              <div class="info-icon">
+                ◌
+              </div><span>atendimento@aetnaclinica.com.br</span>
+            </div>
+            <div class="info-line">
+              <div class="info-icon">
+                ◎
+              </div><span>Monday to Friday, 7am–8pm<br>
+              Saturdays, 8am–2pm</span>
+            </div>
+          </div>
+          <div class="social-row">
+            <a aria-label="Instagram" class="soc-btn" href="#">ig</a><a aria-label="LinkedIn" class="soc-btn" href="#">in</a><a aria-label="WhatsApp" class="soc-btn" href="#">wa</a>
+          </div>
+        </div>
+        <div class="form-wrap lux-shadow reveal reveal-delay-2">
+          <div class="form-title">
+            Request private contact
+          </div>
+          <div class="form-success" id="formSuccessMsg">
+            <div class="check">
+              ✦
+            </div>
+            <p>Request received exclusively. Our team will contact you shortly.</p>
+          </div>
+          <form id="formAetna" name="formAetna" novalidate="">
+            <div class="field-group">
+              <div class="field-row">
+                <div class="field">
+                  <label for="nome">Full name</label><input id="nome" placeholder="John Doe" required="" type="text">
+                </div>
+                <div class="field">
+                  <label for="email">E-mail</label><input id="email" placeholder="john@company.com" required="" type="email">
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="tel">Phone / WhatsApp</label><input id="tel" placeholder="(11) 9 0000-0000" type="tel">
+                </div>
+                <div class="field">
+                  <label for="esp">Specialty</label><select id="esp" required="">
+                    <option value="">
+                      Select
+                    </option>
+                    <option>
+                      Cardiology
+                    </option>
+                    <option>
+                      Neurology
+                    </option>
+                    <option>
+                      Gynecology
+                    </option>
+                    <option>
+                      Pulmonology
+                    </option>
+                    <option>
+                      General Practice
+                    </option>
+                    <option>
+                      Pediatrics
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="msg">Message or preferred time</label>
+                <textarea id="msg" placeholder="I prefer afternoon appointments..." rows="3"></textarea>
+              </div>
+            </div><button class="btn-submit" type="submit"><span>Request private appointment</span></button>
+            <p class="form-note">Data protected under LGPD. Response within 2 business hours.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">
+          ÆTNA
+        </div>
+        <p>Medicine that anticipates care with precision, confidentiality, and a tradition that renews itself with every consultation.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5><a href="#especialidades">Specialties</a><a href="#jornada">Clinical flow</a><a href="#depoimentos">Memories</a><a href="#contato">Scheduling</a>
+      </div>
+      <div class="footer-col">
+        <h5>Specialties</h5>
+        <p>Cardiology</p>
+        <p>Neurology</p>
+        <p>Gynecology</p>
+        <p>Pulmonology</p>
+        <p>General Practice</p>
+      </div>
+      <div class="footer-col">
+        <h5>24h Emergency</h5>
+        <p>0800 882 2090</p>
+        <p style="margin-top:.8rem;font-size:.72rem">Bradesco Saúde, Unimed, SulAmérica, Amil, Porto Seguro</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ÆTNA Precision Clinic — CRM-SP 89.432-0</p>
+      <p>All rights reserved · LGPD Compliant</p>
+    </div>
+  </footer>
+  <script src="script.js">
+  </script>
+</body>
+</html>

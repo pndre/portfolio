@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+  <meta content="Mia Fashion – Art & Fashion Gallery. Exclusive pieces with editorial curation, real reviews, and artisanal process." name="description">
+  <title>Mia Fashion | Art & Fashion Gallery</title><!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <header class="site-header">
+    <div class="logo">
+      <h1>MIA FASHION</h1>
+      <p>art & fashion gallery</p>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#" id="navGallery">Gallery</a>
+      </li>
+      <li>
+        <a href="#" id="navAtelier">Atelier</a>
+      </li>
+      <li>
+        <a href="#" id="navContato">Contact</a>
+      </li>
+    </ul>
+    <div class="header-icons">
+      <button class="icon-btn" id="wishlistIconBtn"><i class="far fa-heart"></i><span class="count-badge" id="wishlistCount">0</span></button> <button class="icon-btn" id="cartIconBtn"><i class="fas fa-shopping-bag"></i><span class="count-badge" id="cartCount">0</span></button> <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="menu-overlay" id="mobileMenu">
+    <button class="menu-close" id="closeMenuBtn">Close</button>
+    <ul>
+      <li>
+        <a href="#" id="mobileGallery">Gallery</a>
+      </li>
+      <li>
+        <a href="#" id="mobileAtelier">Atelier</a>
+      </li>
+      <li>
+        <a href="#" id="mobileContato">Contact</a>
+      </li>
+    </ul>
+    <div class="menu-footer">
+      <a href="#">Instagram</a> <a href="#">Curation</a>
+    </div>
+  </div>
+  <main>
+    <div class="view" id="galleryView">
+      <div class="hero-section">
+        <h2>Fashion as artwork</h2>
+        <div class="hero-divider"></div>
+        <p>Each piece is an exclusive curation. Fabric, form and emotion in perfect harmony.</p>
+      </div>
+      <div class="filters-bar">
+        <div class="search-box">
+          <input id="searchInput" placeholder="Search by name or style..." type="text">
+        </div>
+        <div class="filter-group" id="filterContainer"></div><select class="sort-select" id="sortSelect">
+          <option value="default">
+            Sort by
+          </option>
+          <option value="price-low">
+            Price: low → high
+          </option>
+          <option value="price-high">
+            Price: high → low
+          </option>
+          <option value="rating">
+            Best rated
+          </option>
+        </select>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+      <div class="craft-carousel">
+        <h3 style="font-family: 'Tenor Sans'; letter-spacing: 2px; margin-bottom: 1rem;">The artisanal process</h3>
+        <div class="carousel-track" id="craftTrack"></div>
+      </div>
+    </div>
+    <div class="view hidden" id="detailView">
+      <div class="product-detail">
+        <button class="back-btn" id="backToGallery"><i class="fas fa-arrow-left"></i> Back to gallery</button>
+        <div class="detail-grid">
+          <div>
+            <img alt="" class="main-img" id="detailMainImg">
+            <div class="thumbnails" id="thumbnails"></div>
+          </div>
+          <div>
+            <h2 class="product-title" id="detailTitle"></h2>
+            <div class="detail-price" id="detailPrice"></div>
+            <div class="rating" id="detailRating" style="margin:0.5rem 0"></div>
+            <p id="detailDesc" style="margin:1rem 0; font-size:0.85rem; line-height:1.5;"></p>
+            <div class="size-selector" id="sizeSelector"></div><button class="btn-primary" id="addToCartDetailBtn">Add to curation</button> <button class="btn-primary btn-outline" id="buyNowDetailBtn" style="background:transparent; margin-top:0.5rem;">Buy now</button>
+            <div class="product-extras">
+              <div class="extra-item">
+                <i class="fas fa-leaf"></i><span>Certified organic material</span>
+              </div>
+              <div class="extra-item">
+                <i class="fas fa-truck"></i><span>Free shipping above R$2,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:4rem;">
+          <h3>Real appreciations</h3>
+          <div id="reviewsList"></div>
+        </div>
+        <div style="margin-top:3rem;">
+          <h3>Matching pieces</h3>
+          <div class="related-grid" id="relatedGrid"></div>
+        </div>
+      </div>
+    </div>
+    <div class="view hidden" id="checkoutView">
+      <div class="product-detail" style="max-width:800px">
+        <button class="back-btn" id="backFromCheckout"><i class="fas fa-arrow-left"></i> Back</button>
+        <h2 style="font-family:'Playfair Display';">Complete curation</h2>
+        <form id="checkoutForm" name="checkoutForm">
+          <div style="margin:1rem 0">
+            <label>Full name</label><input class="form-input" id="fullName" required="" style="width:100%; border-bottom:1px solid var(--light-gray); padding:8px 0;" type="text">
+          </div>
+          <div style="margin:1rem 0">
+            <label>E-mail</label><input class="form-input" id="email" required="" type="email">
+          </div>
+          <div style="margin:1rem 0">
+            <label>Address</label><input class="form-input" id="address" required="" type="text">
+          </div>
+          <div style="margin:1rem 0">
+            <label>Payment</label><select class="form-input" id="paymentMethod">
+              <option value="pix">
+                Pix (10% off)
+              </option>
+              <option value="card">
+                Card
+              </option>
+            </select>
+          </div>
+          <div id="checkoutSummary" style="background:#f0eeea; padding:1rem; margin:1rem 0;"></div><button class="btn-primary" type="submit">Confirm order</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>MIA FASHION</h4>
+        <p>Wearable art, timeless curation.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <p><a href="#" id="footerGallery">Gallery</a></p>
+        <p><a href="#" id="footerAtelier">Atelier</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>hello@miafashion.com</p>
+        <p>+55 (71) 99123-4567</p>
+      </div>
+    </div>
+    <div style="text-align:center; font-size:0.7rem; margin-top:2rem;">
+      © 2026 Mia Fashion — Made in Bahia, Brazil
+    </div>
+  </footer>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <span>YOUR CURATION</span><button id="closeCartDrawer" style="background:none; border:none; cursor:pointer;">✕</button>
+    </div>
+    <div class="cart-items-list" id="cartItemsList"></div>
+    <div class="drawer-footer">
+      <div class="cart-total">
+        <span>Total</span><span id="cartTotalAmount">R$ 0</span>
+      </div><button class="btn-primary" id="proceedCheckoutBtn">Checkout</button>
+    </div>
+  </div>
+  <div class="modal-overlay" id="wishlistModal">
+    <div class="modal-container">
+      <h3>Wishlist</h3>
+      <div id="wishlistItemsGrid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:1rem; margin:1rem 0;"></div><button id="closeWishlistModal" style="background:none; border:1px solid var(--light-gray); padding:6px 12px; cursor:pointer;">Close</button>
+    </div>
+  </div>
+  <div class="toast" id="toastMsg"></div>
+  <script src="script.js">
+  </script>
+</body>
+</html>
